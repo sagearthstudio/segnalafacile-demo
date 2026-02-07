@@ -1,156 +1,165 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
   <title>SegnalaFacile – Demo</title>
 
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon-192.png" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
     :root{
-      --bg:#0b1220; --card:#0f1b33; --card2:#0d162b; --text:#e8eefc;
-      --muted:#a8b4d6; --accent:#2d7dff; --accent2:#19c37d; --danger:#ff4d4f;
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --text:#e8eefc;
+      --muted:#a8b4d6;
+      --accent:#2d7dff;
+      --accent2:#19c37d;
+      --danger:#ff4d4f;
       --stroke:rgba(255,255,255,.10);
       --r:18px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(45,125,255,.25), transparent 50%),
-                  radial-gradient(1000px 700px at 80% 10%, rgba(25,195,125,.18), transparent 55%),
-                  var(--bg);
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);
       color:var(--text);
     }
-    .wrap{max-width:860px; margin:0 auto; padding:22px 16px 90px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0 6px;}
-    .brand{display:flex; align-items:center; gap:10px;}
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(45,125,255,.95), rgba(25,195,125,.9));
-      box-shadow: 0 10px 25px rgba(0,0,0,.35);
-    }
-    .title{font-size:18px; font-weight:800}
-    .badge{font-size:12px; color:var(--muted); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px}
-    .grid{display:grid; gap:14px}
+    .wrap{max-width:860px;margin:0 auto;padding:20px 16px 90px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:38px;height:38px;border-radius:12px;
+      background:linear-gradient(135deg,#2d7dff,#19c37d)}
+    .title{font-weight:800;font-size:18px}
+    .badge{font-size:12px;color:var(--muted)}
+    .grid{display:grid;gap:14px}
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:rgba(255,255,255,.05);
       border:1px solid var(--stroke);
       border-radius:var(--r);
       padding:16px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-      backdrop-filter: blur(6px);
     }
-    .hero h1{margin:0 0 8px; font-size:28px}
-    .hero p{margin:0; color:var(--muted); font-size:14px}
-    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .btn,button{
-      cursor:pointer; border:0; border-radius:14px;
-      padding:12px 14px; font-weight:700; font-size:14px;
-      display:inline-flex; align-items:center; gap:10px;
-      text-decoration:none; color:var(--text);
+      border:0;border-radius:14px;
+      padding:12px 14px;
+      font-weight:700;
+      cursor:pointer;
+      color:var(--text);
+      background:rgba(255,255,255,.08);
     }
     .primary{background:var(--accent)}
-    .ghost{background:rgba(255,255,255,.06); border:1px solid var(--stroke)}
-    .danger{background:rgba(255,77,79,.14); border:1px solid rgba(255,77,79,.35)}
-    .small{padding:10px 12px; font-size:13px}
-    .hidden{display:none !important}
-    nav.bottom{
-      position:fixed; left:0; right:0; bottom:0;
-      background:rgba(9,14,28,.78);
+    .danger{background:rgba(255,77,79,.18)}
+    input,textarea{
+      width:100%;padding:12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background:#0003;color:var(--text);
+    }
+    textarea{min-height:100px}
+    .hidden{display:none}
+    nav{
+      position:fixed;bottom:0;left:0;right:0;
+      background:#0b1220ee;
       border-top:1px solid var(--stroke);
-      backdrop-filter: blur(10px);
     }
     nav .inner{
-      max-width:860px; margin:0 auto;
-      display:flex; justify-content:space-around;
+      max-width:860px;margin:0 auto;
+      display:flex;justify-content:space-around;
       padding:10px;
     }
-    nav a{
-      text-decoration:none; color:var(--muted);
-      font-size:12px; padding:10px 8px; border-radius:14px;
-    }
-    nav a.active{
-      color:var(--text);
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--stroke);
-    }
+    nav a{color:var(--muted);text-decoration:none;font-size:12px}
+    nav a.active{color:var(--text)}
   </style>
 </head>
 
 <body>
+
 <div class="wrap">
-<header>
-  <div class="brand">
-    <div class="logo"></div>
-    <div>
-      <div class="title">SegnalaFacile</div>
-      <div class="badge">DEMO • PWA • Telegram integrato</div>
+  <header>
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <div class="title">SegnalaFacile</div>
+        <div class="badge">DEMO • Telegram integrato</div>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<section id="view-home" class="grid">
-  <div class="card hero">
-    <h1>Invia una segnalazione in pochi secondi</h1>
-    <p>Descrivi il problema e invia. Arriva anche su Telegram.</p>
-    <div class="btnRow">
-      <a class="btn primary" href="#/report">📝 Invia segnalazione</a>
+  <!-- HOME -->
+  <section id="home" class="grid">
+    <div class="card">
+      <h2>Invia una segnalazione</h2>
+      <p class="badge">Verrà inoltrata anche su Telegram</p>
+      <div class="btnRow">
+        <a class="btn primary" href="#report">📝 Segnala</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="view-report" class="grid hidden">
-  <div class="card">
-    <label>Titolo</label>
-    <input id="titolo" type="text" />
-    <label>Descrizione</label>
-    <textarea id="descrizione"></textarea>
-    <label><input type="checkbox" id="anonimo"> Invia in forma anonima</label>
-    <div class="btnRow">
-      <button class="primary" id="btnSend">✅ Invia</button>
+  <!-- REPORT -->
+  <section id="report" class="grid hidden">
+    <div class="card">
+      <label>Titolo</label>
+      <input id="titolo">
+
+      <label>Descrizione</label>
+      <textarea id="descrizione"></textarea>
+
+      <label>
+        <input type="checkbox" id="anonimo"> Invia anonimo
+      </label>
+
+      <div class="btnRow">
+        <button class="primary" id="btnSend">Invia</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="view-success" class="grid hidden">
-  <div class="card">
-    <h2>✅ Segnalazione inviata</h2>
-    <a class="btn primary" href="#/">Torna alla home</a>
-  </div>
-</section>
+  <!-- SUCCESS -->
+  <section id="success" class="grid hidden">
+    <div class="card">
+      <h2>✅ Segnalazione inviata</h2>
+      <a class="btn" href="#">Torna alla home</a>
+    </div>
+  </section>
 </div>
 
-<nav class="bottom">
+<nav>
   <div class="inner">
-    <a href="#/" data-nav="home" class="active">🏠 Home</a>
-    <a href="#/report" data-nav="report">📝 Segnala</a>
+    <a href="#" data-view="home" class="active">Home</a>
+    <a href="#report" data-view="report">Segnala</a>
   </div>
 </nav>
 
 <script>
+/* CONFIG */
 const CONFIG = {
   telegramWorkerUrl: "https://segnalafacile-telegram.vocidicassino.workers.dev",
   telegramApiKey: "Marco-Admin-2026"
 };
 
-const views = {
-  home: document.getElementById("view-home"),
-  report: document.getElementById("view-report"),
-  success: document.getElementById("view-success")
-};
-
-function route(){
-  const h = location.hash.replace("#/","");
-  Object.values(views).forEach(v=>v.classList.add("hidden"));
-  (views[h] || views.home).classList.remove("hidden");
+/* ROUTER */
+const views = ["home","report","success"];
+function show(v){
+  views.forEach(id=>{
+    document.getElementById(id).classList.toggle("hidden", id!==v);
+  });
+  document.querySelectorAll("nav a").forEach(a=>{
+    a.classList.toggle("active", a.dataset.view===v);
+  });
 }
-window.addEventListener("hashchange", route);
-route();
+window.addEventListener("hashchange", ()=>{
+  const v = location.hash.replace("#","") || "home";
+  show(v);
+});
+show("home");
 
+/* INVIO */
 document.getElementById("btnSend").addEventListener("click", async ()=>{
   const titolo = titolo.value.trim();
   const descrizione = descrizione.value.trim();
@@ -171,8 +180,9 @@ document.getElementById("btnSend").addEventListener("click", async ()=>{
     })
   });
 
-  location.hash="#/success";
+  location.hash="#success";
 });
 </script>
+
 </body>
 </html>
