@@ -478,6 +478,33 @@
         return;
       }
 
+      // Inoltra anche su Telegram (gruppo) tramite Worker (token al sicuro)
+(async () => {
+  try {
+    if (!CONFIG.telegramWorkerUrl) return;
+
+    const payload = {
+      titolo,
+      descrizione,
+      anonimo: !!elAnonimo.checked,
+      when: new Date().toLocaleString("it-IT"),
+      hasPhoto: !!photoDataUrl
+    };
+
+    await fetch(CONFIG.telegramWorkerUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Api-Key": CONFIG.telegramApiKey || ""
+      },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {
+    // Demo: non blocchiamo l'invio locale se Telegram fallisce
+    console.warn("Invio Telegram fallito:", e);
+  }
+})();
+     
       const reports = loadReports();
       const now = new Date();
       const item = {
